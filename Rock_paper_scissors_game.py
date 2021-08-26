@@ -1,11 +1,10 @@
 import random
 
+scoretable = [0,0]
 
 def computer_choice():
     choices = ['rock', 'paper', 'scissors']
     return random.choice(choices)
-
-scoretable = [0,0]
 
 def player_choice(player):
     if player == "1":
@@ -16,10 +15,9 @@ def player_choice(player):
         player_choice = "scissors"
     return player_choice
 
-scoretable = [0,0]
-def score_computer():
+def add_point_computer():
     scoretable[0] = scoretable[0] + 1
-def score_player():
+def add_point_player():
     scoretable[1] = scoretable[1] + 1
 
 def run_game():
@@ -39,12 +37,12 @@ def run_game():
     print("Computer picked:", computer)
     if (test in player_winning_condition):
         print("You won!")
-        score_player()
+        add_point_player()
     elif (test in player_draw_condition):
         print("It's a draw!")
     else:
         print("You lost!")
-        score_computer()
+        add_point_computer()
     print("")
     score_display()
     
@@ -64,17 +62,18 @@ def game_finish():
     quit()
 
 
-while (True):
-    run_game()
-
+if __name__ == "__main__":
     while (True):
-        play_again = input("Play Again? [Y/n]: ").lower()
-        if play_again == "" or play_again == "y":
-            break
-        elif play_again == "n":
-            game_finish()
-        else:
-            print("Wrong choice, try again")
+        run_game()
+
+        while (True):
+            play_again = input("Play Again? [Y/n]: ").lower()
+            if play_again == "" or play_again == "y":
+                break
+            elif play_again == "n":
+                game_finish()
+            else:
+                print("Wrong choice, try again")
     
 
 
